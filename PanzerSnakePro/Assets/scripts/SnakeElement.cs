@@ -18,6 +18,8 @@ public class SnakeElement : MonoBehaviour
 
     private List<Vector3> myPositions = new List<Vector3>();
 
+    private Vector3 prevPosition;
+
     public int positionsNumb;
 
     // Start is called before the first frame update
@@ -33,13 +35,19 @@ public class SnakeElement : MonoBehaviour
                 myPositions.Add(new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0));
             }
         }
+        prevPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0);
         tankPrefab = Instantiate(tankPrefabs[idx], gameObject.transform.localPosition, Quaternion.identity, gameObject.transform);
         weaponPrefab = Instantiate(weaponPrefabs[idx], gameObject.transform.localPosition, Quaternion.identity, gameObject.transform);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        Vector3 dir = gameObject.transform.localPosition - prevPosition;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 50 * Time.deltaTime);
+
         float axisX = Input.GetAxis("Horizontal");
         float axisY = Input.GetAxis("Vertical");
         float r = (float)Math.Sqrt(axisX*axisX + axisY*axisY);
@@ -53,6 +61,7 @@ public class SnakeElement : MonoBehaviour
 
             myPositions.Add(new Vector3(gameObject.transform.localPosition.x + axisX/r * 0.02f, gameObject.transform.localPosition.y + axisY/r * 0.02f, 0));
         }
+        prevPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0);
         gameObject.transform.localPosition = myPositions[0];
         myPositions.RemoveAt(0);
     }
