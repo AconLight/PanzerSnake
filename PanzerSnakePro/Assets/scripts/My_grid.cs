@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class My_grid : MonoBehaviour
 {
 
     public GameObject gridElementPrefab; 
