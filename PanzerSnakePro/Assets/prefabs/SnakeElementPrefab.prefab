@@ -53,3 +53,4 @@ MonoBehaviour:
   - {fileID: 4544014689388570305, guid: 8e8e0c0cdfba77843a411f574690ba88, type: 3}
   - {fileID: 7560344475361076143, guid: d7c07fb6f580b0640a84a9c83e7713aa, type: 3}
   - {fileID: 2250613260835026873, guid: 5ae4cb981f013124d93eadffc9e71250, type: 3}
+  positionsNumb: 100
