@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9143091809311206663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3838807485707141673}
+  - component: {fileID: 3056058808293777940}
+  m_Layer: 0
+  m_Name: SnakeElementPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3838807485707141673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143091809311206663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3056058808293777940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143091809311206663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c8bc1bbe321034db0bee89084f0922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankPrefabs:
+  - {fileID: 8313466208238694885, guid: acb998f60e297b840a88d952e6e8a298, type: 3}
+  - {fileID: 8606127053207096627, guid: 5766908c3d48dd14ea26e0485249174d, type: 3}
+  - {fileID: 7725734411069768904, guid: 8d20f88e35fdfad498fada80abbbad46, type: 3}
+  - {fileID: 3465915917922490005, guid: b9af327c81af3f342869b894daea5bb7, type: 3}
+  weaponPrefabs:
+  - {fileID: 3849099740386195667, guid: 4c752798f0573974d839f97475068229, type: 3}
+  - {fileID: 4544014689388570305, guid: 8e8e0c0cdfba77843a411f574690ba88, type: 3}
+  - {fileID: 7560344475361076143, guid: d7c07fb6f580b0640a84a9c83e7713aa, type: 3}
+  - {fileID: 2250613260835026873, guid: 5ae4cb981f013124d93eadffc9e71250, type: 3}
