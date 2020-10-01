@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SnakeElement : MonoBehaviour
 {
+
+    public GameObject[] tankPrefabs;
+    public GameObject[] weaponPrefabs;
+
     // Start is called before the first frame update
     void Start()
     {
