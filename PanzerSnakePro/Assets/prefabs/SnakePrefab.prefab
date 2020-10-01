@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3565886222068070089
+--- !u!1 &3996983311414527950
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3565886222068070071}
-  - component: {fileID: 3565886222068070088}
+  - component: {fileID: 8780991846603313504}
+  - component: {fileID: 7418318375943695141}
   m_Layer: 0
-  m_Name: GamePrefab
+  m_Name: SnakePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3565886222068070071
+--- !u!4 &8780991846603313504
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3565886222068070089}
+  m_GameObject: {fileID: 3996983311414527950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,19 +31,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3565886222068070088
+--- !u!114 &7418318375943695141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3565886222068070089}
+  m_GameObject: {fileID: 3996983311414527950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df72ee07fcf46e4fa02ade05e6cd71f, type: 3}
+  m_Script: {fileID: 11500000, guid: adecb2d4831f4b54ca8b93ddb8067b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridPrefab: {fileID: 1345652367842358181, guid: 623053759e9df5945a83505ecf6885c9,
-    type: 3}
-  snakePrefab: {fileID: 3996983311414527950, guid: 18f0114ab1be63b48815340e52a74251,
+  snakeElementPrefab: {fileID: 9143091809311206663, guid: 77d74065e0fbd8a45ba788ac44d5b146,
     type: 3}
