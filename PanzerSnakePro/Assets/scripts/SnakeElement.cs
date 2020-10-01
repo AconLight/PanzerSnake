@@ -45,8 +45,8 @@ public class SnakeElement : MonoBehaviour
     {
         Vector3 dir = gameObject.transform.localPosition - prevPosition;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 50 * Time.deltaTime);
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 7 * Time.deltaTime);
 
         float axisX = Input.GetAxis("Horizontal");
         float axisY = Input.GetAxis("Vertical");
