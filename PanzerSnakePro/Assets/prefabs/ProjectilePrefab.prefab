@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9143091809311206663
+--- !u!1 &4778717458575040035
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3838807485707141673}
-  - component: {fileID: 3056058808293777940}
-  - component: {fileID: 8941616831164216452}
+  - component: {fileID: 1250208843484449685}
+  - component: {fileID: 6209723199377184857}
+  - component: {fileID: -1612819779997537156}
   m_Layer: 0
-  m_Name: SnakeElementPrefab
-  m_TagString: snakeElement
+  m_Name: ProjectilePrefab
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3838807485707141673
+--- !u!4 &1250208843484449685
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9143091809311206663}
+  m_GameObject: {fileID: 4778717458575040035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,41 +32,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3056058808293777940
+--- !u!114 &6209723199377184857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9143091809311206663}
+  m_GameObject: {fileID: 4778717458575040035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80c8bc1bbe321034db0bee89084f0922, type: 3}
+  m_Script: {fileID: 11500000, guid: c1f7b2f80d903d14286525a59c9e3d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankPrefabs:
-  - {fileID: 8313466208238694885, guid: acb998f60e297b840a88d952e6e8a298, type: 3}
-  - {fileID: 8606127053207096627, guid: 5766908c3d48dd14ea26e0485249174d, type: 3}
-  - {fileID: 7725734411069768904, guid: 8d20f88e35fdfad498fada80abbbad46, type: 3}
-  - {fileID: 3465915917922490005, guid: b9af327c81af3f342869b894daea5bb7, type: 3}
-  weaponPrefabs:
-  - {fileID: 3849099740386195667, guid: 4c752798f0573974d839f97475068229, type: 3}
-  - {fileID: 4544014689388570305, guid: 8e8e0c0cdfba77843a411f574690ba88, type: 3}
-  - {fileID: 7560344475361076143, guid: d7c07fb6f580b0640a84a9c83e7713aa, type: 3}
-  - {fileID: 2250613260835026873, guid: 5ae4cb981f013124d93eadffc9e71250, type: 3}
-  projectilePrefab: {fileID: 4778717458575040035, guid: 2b5d5dc21b35b8845bcf0dc12ff68f1f,
+  projectileSpritePrefab: {fileID: 7301550161101719518, guid: 4c6e0ebb6c73cf04b90d5ac6ccf936e5,
     type: 3}
-  canFire: 1
-  positionsNumb: 100
-  typeIdx: 0
-  health: 100
---- !u!61 &8941616831164216452
+  mySnake: {fileID: 0}
+--- !u!61 &-1612819779997537156
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9143091809311206663}
+  m_GameObject: {fileID: 4778717458575040035}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -84,5 +71,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0

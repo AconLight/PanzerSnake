@@ -13,6 +13,9 @@ public class Game : MonoBehaviour
         Instantiate(gridPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         GameObject snake1 = Instantiate(snakePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         snake1.GetComponent<Snake>().ChooseType(0);
+
+        GameObject snake2 = Instantiate(snakePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        snake2.GetComponent<Snake>().ChooseType(1);
     }
 
     // Update is called once per frame

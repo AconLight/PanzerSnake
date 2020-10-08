@@ -39,7 +39,6 @@ public class Snake : MonoBehaviour
         AddElement();
         AddElement();
         AddElement();
-        snakeElements[1].GetComponent<SnakeElement>().OnDestroyElement();
     }
 
     void Update()
