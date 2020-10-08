@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Net.NetworkInformation;
+using System;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using System.Collections;
@@ -15,6 +16,9 @@ public class SnakeElement : MonoBehaviour
     private GameObject weaponPrefab;
 
     public GameObject prev { get; set; }
+    public GameObject next { get; set; }
+
+    public Boolean isDetached { get; set; }
 
     private List<Vector3> myPositions = new List<Vector3>();
 
@@ -40,6 +44,25 @@ public class SnakeElement : MonoBehaviour
         weaponPrefab = Instantiate(weaponPrefabs[idx], gameObject.transform.localPosition, Quaternion.identity, gameObject.transform);
     }
 
+    public void OnDestroyElement() {
+        DetachMeAndNexts();
+        Destroy(gameObject);
+    }
+
+    private void DestroyMe() {
+        // TODO
+    }
+
+    public void DetachMeAndNexts() {
+        if (next) {
+            next.GetComponent<SnakeElement>().DetachMeAndNexts();
+        }
+        gameObject.transform.parent = null;
+        prev = null;
+        next = null;
+        isDetached = true;
+    }
+
 
     void Update()
     {
@@ -57,6 +80,8 @@ public class SnakeElement : MonoBehaviour
 
         if (prev) {
             myPositions.Add(new Vector3(prev.transform.localPosition.x, prev.transform.localPosition.y, 0));
+        } else if (isDetached) {
+            return;
         } else {
 
             myPositions.Add(new Vector3(gameObject.transform.localPosition.x + axisX/r * 0.02f, gameObject.transform.localPosition.y + axisY/r * 0.02f, 0));

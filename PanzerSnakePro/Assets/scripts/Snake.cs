@@ -26,6 +26,7 @@ public class Snake : MonoBehaviour
         if (snakeElements.Count > 0) {
             snakeElement = Instantiate(snakeElementPrefab, snakeElements[snakeElements.Count-1].transform.position, Quaternion.identity, gameObject.transform);
             snakeElement.GetComponent<SnakeElement>().prev = snakeElements[snakeElements.Count-1];
+            snakeElements[snakeElements.Count-1].GetComponent<SnakeElement>().next = snakeElement;
         } else {
             snakeElement = Instantiate(snakeElementPrefab, startPosition, Quaternion.identity, gameObject.transform);
         }
@@ -38,6 +39,7 @@ public class Snake : MonoBehaviour
         AddElement();
         AddElement();
         AddElement();
+        snakeElements[1].GetComponent<SnakeElement>().OnDestroyElement();
     }
 
     void Update()
