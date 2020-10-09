@@ -46,6 +46,7 @@ public class SnakeElement : MonoBehaviour
     }
 
     public void ChooseType(int idx) {
+        gameObject.transform.localPosition = settings.GetComponent<Settings>().startPositions[idx];
         positionsNumb = settings.GetComponent<Settings>().nextTankIterationsDelay;
         typeIdx = idx;
         UnityEngine.Debug.Log("elo");
@@ -115,28 +116,34 @@ public class SnakeElement : MonoBehaviour
             Fire();
         }
 
-        Vector3 dir = gameObject.transform.localPosition - prevPosition;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 7 * Time.deltaTime);
-
         float axisX = Input.GetAxis("Horizontal");
         float axisY = Input.GetAxis("Vertical");
         if (typeIdx != 0) {
             axisY = 0;
             axisX = 0;
         }
-        float r = (float)Math.Sqrt(axisX*axisX + axisY*axisY);
+
         if (axisX == 0f && axisY == 0f) {
             return;
         }
+        UnityEngine.Debug.Log(axisX);
+        move(axisX, axisY, Time.deltaTime);
+
+    }
+
+    public void move(float axisX, float axisY, float delta) {
+        float r = (float)Math.Sqrt(axisX*axisX + axisY*axisY);
+        Vector3 dir = gameObject.transform.localPosition - prevPosition;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 10/settings.GetComponent<Settings>().tankRotationSmoothness * delta);
 
         if (prev) {
             myPositions.Add(new Vector3(prev.transform.localPosition.x, prev.transform.localPosition.y, 0));
         } else if (isDetached) {
             return;
         } else {
-            myPositions.Add(new Vector3(gameObject.transform.localPosition.x + axisX/r * Time.deltaTime * settings.GetComponent<Settings>().snakeSpeed, gameObject.transform.localPosition.y + axisY/r * Time.deltaTime * settings.GetComponent<Settings>().snakeSpeed, 0));
+            myPositions.Add(new Vector3(gameObject.transform.localPosition.x + axisX/r * delta * settings.GetComponent<Settings>().snakeSpeed, gameObject.transform.localPosition.y + axisY/r * delta * settings.GetComponent<Settings>().snakeSpeed, 0));
         }
         prevPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0);
         gameObject.transform.localPosition = myPositions[0];

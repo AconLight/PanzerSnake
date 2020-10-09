@@ -19,6 +19,14 @@ public class Settings : MonoBehaviour
 
     public int snakeInitSize;
 
+    public int snakesNumb;
+
     public int nextTankIterationsDelay;
+
+    public Vector3[] startPositions;
+
+    public float startPositionScale;
+
+    public float tankRotationSmoothness;
 
 }
