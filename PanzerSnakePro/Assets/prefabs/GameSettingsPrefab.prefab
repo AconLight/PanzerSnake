@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3565886222068070089
+--- !u!1 &7808597234957521879
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3565886222068070071}
-  - component: {fileID: 3565886222068070088}
+  - component: {fileID: 2359590705147676805}
+  - component: {fileID: -6492177087861125315}
   m_Layer: 0
-  m_Name: GamePrefab
+  m_Name: GameSettingsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3565886222068070071
+--- !u!4 &2359590705147676805
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3565886222068070089}
+  m_GameObject: {fileID: 7808597234957521879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.2911175, y: 0.5144552, z: -2.2978516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3565886222068070088
+--- !u!114 &-6492177087861125315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3565886222068070089}
+  m_GameObject: {fileID: 7808597234957521879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df72ee07fcf46e4fa02ade05e6cd71f, type: 3}
+  m_Script: {fileID: 11500000, guid: b0fb6b8faa1f08046950bd96bda7d558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridPrefab: {fileID: 1345652367842358181, guid: 623053759e9df5945a83505ecf6885c9,
-    type: 3}
-  snakePrefab: {fileID: 3996983311414527950, guid: 18f0114ab1be63b48815340e52a74251,
-    type: 3}
-  settings: {fileID: 7808597234957521879, guid: eea3122fadf1f3a4aa48dce0c28a9dbf,
-    type: 3}
+  fireCooldown: 0.4
+  fireDamage: 20
+  fireSpeed: 10
+  firstTankHealth: 100
+  nextTankHealthScale: 0.8
+  snakeSpeed: 5
+  snakeInitSize: 3
+  nextTankIterationsDelay: 100

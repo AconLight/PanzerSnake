@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Timers;
+using System.Threading;
 using System.Net.NetworkInformation;
 using System;
 using System.Runtime.CompilerServices;
@@ -9,6 +10,7 @@ using UnityEngine;
 
 public class SnakeElement : MonoBehaviour
 {
+    public GameObject settings;
 
     public GameObject[] tankPrefabs;
     public GameObject[] weaponPrefabs;
@@ -35,7 +37,7 @@ public class SnakeElement : MonoBehaviour
 
     public int typeIdx;
 
-    public int health = 100;
+    public float health = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class SnakeElement : MonoBehaviour
     }
 
     public void ChooseType(int idx) {
+        positionsNumb = settings.GetComponent<Settings>().nextTankIterationsDelay;
         typeIdx = idx;
         UnityEngine.Debug.Log("elo");
         if (prev) {
@@ -54,9 +57,10 @@ public class SnakeElement : MonoBehaviour
         prevPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0);
         tankPrefab = Instantiate(tankPrefabs[idx], gameObject.transform.localPosition, Quaternion.identity, gameObject.transform);
         weaponPrefab = Instantiate(weaponPrefabs[idx], gameObject.transform.localPosition, Quaternion.identity, gameObject.transform);
+        fireCooldown = settings.GetComponent<Settings>().fireCooldown;
     }
 
-    private void TakeHit(int val) {
+    private void TakeHit(float val) {
         health -= val;
         if (health <= 0) {
             OnDestroyElement();
@@ -86,7 +90,7 @@ public class SnakeElement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("projectile")) {
             if (gameObject.transform.parent && other.gameObject.GetComponent<Projectile>().mySnake != gameObject.transform.parent.gameObject) {
-                TakeHit(20);
+                TakeHit(settings.GetComponent<Settings>().fireDamage);
                 other.gameObject.GetComponent<Projectile>().OnDestroyProjectile();
             }
             
@@ -132,7 +136,7 @@ public class SnakeElement : MonoBehaviour
         } else if (isDetached) {
             return;
         } else {
-            myPositions.Add(new Vector3(gameObject.transform.localPosition.x + axisX/r * 0.02f, gameObject.transform.localPosition.y + axisY/r * 0.02f, 0));
+            myPositions.Add(new Vector3(gameObject.transform.localPosition.x + axisX/r * Time.deltaTime * settings.GetComponent<Settings>().snakeSpeed, gameObject.transform.localPosition.y + axisY/r * Time.deltaTime * settings.GetComponent<Settings>().snakeSpeed, 0));
         }
         prevPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0);
         gameObject.transform.localPosition = myPositions[0];

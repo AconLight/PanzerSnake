@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adecb2d4831f4b54ca8b93ddb8067b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 7808597234957521879, guid: eea3122fadf1f3a4aa48dce0c28a9dbf,
+    type: 3}
   snakeElementPrefab: {fileID: 9143091809311206663, guid: 77d74065e0fbd8a45ba788ac44d5b146,
     type: 3}
 --- !u!210 &2218538238220130019

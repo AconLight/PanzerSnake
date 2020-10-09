@@ -6,6 +6,7 @@ public class Game : MonoBehaviour
 {
     public GameObject gridPrefab; 
     public GameObject snakePrefab;
+    public GameObject settings;
 
     // Start is called before the first frame update
     void Start()

@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Collections;
@@ -7,6 +8,8 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
+
+    public GameObject settings;
 
     public GameObject snakeElementPrefab;
     
@@ -32,13 +35,14 @@ public class Snake : MonoBehaviour
         }
         snakeElements.Add(snakeElement);
         snakeElement.GetComponent<SnakeElement>().ChooseType(typeIdx);
+        snakeElement.GetComponent<SnakeElement>().health = settings.GetComponent<Settings>().firstTankHealth * Mathf.Pow(settings.GetComponent<Settings>().nextTankHealthScale, snakeElements.Count-1);
     }
 
     public void ChooseType(int idx) {
         typeIdx = idx;
-        AddElement();
-        AddElement();
-        AddElement();
+        for (int i = 0; i < settings.GetComponent<Settings>().snakeInitSize; i++) {
+            AddElement();
+        }
     }
 
     void Update()

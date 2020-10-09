@@ -7,6 +7,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
+    public GameObject settings;
+
     public GameObject projectileSpritePrefab;
 
     public GameObject mySnake;
@@ -14,8 +16,6 @@ public class Projectile : MonoBehaviour
     private Vector2 myVelocity;
 
     private GameObject myParent;
-
-    private float speed = 15f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
     }
 
     public void SetProjectile(GameObject myParent) {
+        float speed = settings.GetComponent<Settings>().fireSpeed;
         UnityEngine.Debug.Log(myParent.transform.rotation.eulerAngles.z);
         this.myParent = myParent;
         Instantiate(projectileSpritePrefab, myParent.transform.position, Quaternion.identity, gameObject.transform);

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f7b2f80d903d14286525a59c9e3d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 7808597234957521879, guid: eea3122fadf1f3a4aa48dce0c28a9dbf,
+    type: 3}
   projectileSpritePrefab: {fileID: 7301550161101719518, guid: 4c6e0ebb6c73cf04b90d5ac6ccf936e5,
     type: 3}
   mySnake: {fileID: 0}

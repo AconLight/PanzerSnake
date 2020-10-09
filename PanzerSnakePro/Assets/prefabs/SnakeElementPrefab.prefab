@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c8bc1bbe321034db0bee89084f0922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 7808597234957521879, guid: eea3122fadf1f3a4aa48dce0c28a9dbf,
+    type: 3}
   tankPrefabs:
   - {fileID: 8313466208238694885, guid: acb998f60e297b840a88d952e6e8a298, type: 3}
   - {fileID: 8606127053207096627, guid: 5766908c3d48dd14ea26e0485249174d, type: 3}
@@ -56,7 +58,7 @@ MonoBehaviour:
   - {fileID: 2250613260835026873, guid: 5ae4cb981f013124d93eadffc9e71250, type: 3}
   projectilePrefab: {fileID: 4778717458575040035, guid: 2b5d5dc21b35b8845bcf0dc12ff68f1f,
     type: 3}
-  canFire: 1
+  fireCooldown: 0.5
   positionsNumb: 100
   typeIdx: 0
   health: 100
