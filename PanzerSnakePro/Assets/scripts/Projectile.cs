@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Threading;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +10,12 @@ public class Projectile : MonoBehaviour
     public GameObject projectileSpritePrefab;
 
     public GameObject mySnake;
+
+    private Vector2 myVelocity;
+
+    private GameObject myParent;
+
+    public float speed = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +28,16 @@ public class Projectile : MonoBehaviour
     }
 
     public void SetProjectile(GameObject myParent) {
+        UnityEngine.Debug.Log(myParent.transform.rotation.eulerAngles.z);
+        this.myParent = myParent;
         Instantiate(projectileSpritePrefab, myParent.transform.position, Quaternion.identity, gameObject.transform);
+        myVelocity = new Vector2(Mathf.Cos((myParent.transform.rotation.eulerAngles.z-90)*Mathf.Deg2Rad)*speed, Mathf.Sin((myParent.transform.rotation.eulerAngles.z-90)*Mathf.Deg2Rad)*speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 0.002f, 0);
+        
+        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x + myVelocity.x*Time.deltaTime, gameObject.transform.localPosition.y + myVelocity.y*Time.deltaTime, 0);
     }
 }
