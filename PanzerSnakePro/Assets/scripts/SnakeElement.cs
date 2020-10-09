@@ -79,12 +79,12 @@ public class SnakeElement : MonoBehaviour
         isDetached = true;
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        UnityEngine.Debug.Log("test");
-        if (collision.gameObject.CompareTag("projectile")) {
-            if (collision.gameObject.GetComponent<Projectile>().mySnake != gameObject.transform.parent.gameObject) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("projectile")) {
+            if (gameObject.transform.parent && other.gameObject.GetComponent<Projectile>().mySnake != gameObject.transform.parent.gameObject) {
                 TakeHit(200);
-                collision.gameObject.GetComponent<Projectile>().OnDestroyProjectile();
+                other.gameObject.GetComponent<Projectile>().OnDestroyProjectile();
             }
             
         }
