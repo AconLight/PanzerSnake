@@ -1,4 +1,5 @@
-﻿using System.Net.NetworkInformation;
+﻿using System.Threading;
+using System.Net.NetworkInformation;
 using System;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
@@ -22,7 +23,9 @@ public class SnakeElement : MonoBehaviour
 
     public Boolean isDetached { get; set; }
 
-    public Boolean canFire = true;
+    public float fireCooldown = 0.5f;
+
+    private float canFire = 0f;
 
     private List<Vector3> myPositions = new List<Vector3>();
 
@@ -83,7 +86,7 @@ public class SnakeElement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("projectile")) {
             if (gameObject.transform.parent && other.gameObject.GetComponent<Projectile>().mySnake != gameObject.transform.parent.gameObject) {
-                TakeHit(200);
+                TakeHit(20);
                 other.gameObject.GetComponent<Projectile>().OnDestroyProjectile();
             }
             
@@ -91,17 +94,18 @@ public class SnakeElement : MonoBehaviour
     }
 
     private void Fire() {
-        if (!canFire) {
+        if (canFire > 0 || isDetached) {
             return;
         }
         GameObject proj = Instantiate(projectilePrefab, gameObject.transform.localPosition, Quaternion.identity, null);
         proj.GetComponent<Projectile>().mySnake = gameObject.transform.parent.gameObject;
         proj.GetComponent<Projectile>().SetProjectile(gameObject);
-        canFire = false;
+        canFire = fireCooldown;
     }
 
     void Update()
     {
+        canFire -= Time.deltaTime;
 
         if (Input.GetButton("Fire1")) {
             Fire();
