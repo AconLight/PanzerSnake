@@ -26,9 +26,12 @@ public class Snake : MonoBehaviour
     }
 
     public void AddElement() {
+        snakeElements.RemoveAll(item => item == null);
         GameObject snakeElement;
+        Vector3 setPosition = settings.GetComponent<Settings>().startPositions[typeIdx];
         if (snakeElements.Count > 0) {
-            snakeElement = Instantiate(snakeElementPrefab, snakeElements[snakeElements.Count-1].transform.position, Quaternion.identity, gameObject.transform);
+            setPosition = snakeElements[snakeElements.Count-1].transform.localPosition;
+            snakeElement = Instantiate(snakeElementPrefab, snakeElements[snakeElements.Count-1].transform.localPosition, Quaternion.identity, gameObject.transform);
             snakeElement.GetComponent<SnakeElement>().prev = snakeElements[snakeElements.Count-1];
             snakeElements[snakeElements.Count-1].GetComponent<SnakeElement>().next = snakeElement;
         } else {
@@ -36,7 +39,7 @@ public class Snake : MonoBehaviour
         }
         snakeElements.Add(snakeElement);
         snakeElement.GetComponent<SnakeElement>().health = settings.GetComponent<Settings>().firstTankHealth * Mathf.Pow(settings.GetComponent<Settings>().nextTankHealthScale, snakeElements.Count-1);
-        snakeElement.GetComponent<SnakeElement>().ChooseType(typeIdx);
+        snakeElement.GetComponent<SnakeElement>().ChooseType(typeIdx, setPosition);
     }
 
     public void ChooseType(int idx) {

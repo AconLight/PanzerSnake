@@ -58,6 +58,8 @@ MonoBehaviour:
   - {fileID: 2250613260835026873, guid: 5ae4cb981f013124d93eadffc9e71250, type: 3}
   projectilePrefab: {fileID: 4778717458575040035, guid: 2b5d5dc21b35b8845bcf0dc12ff68f1f,
     type: 3}
+  detachedSnakeElementPrefab: {fileID: 6718550148844608096, guid: f73ccdb54076e2440a01317c1f6a785f,
+    type: 3}
   fireCooldown: 0.5
   positionsNumb: 100
   typeIdx: 0

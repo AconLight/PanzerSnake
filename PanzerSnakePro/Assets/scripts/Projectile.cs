@@ -29,7 +29,6 @@ public class Projectile : MonoBehaviour
 
     public void SetProjectile(GameObject myParent) {
         float speed = settings.GetComponent<Settings>().fireSpeed;
-        UnityEngine.Debug.Log(myParent.transform.rotation.eulerAngles.z);
         this.myParent = myParent;
         Instantiate(projectileSpritePrefab, myParent.transform.position, Quaternion.identity, gameObject.transform);
         myVelocity = new Vector2(Mathf.Cos((myParent.transform.rotation.eulerAngles.z-90)*Mathf.Deg2Rad)*speed, Mathf.Sin((myParent.transform.rotation.eulerAngles.z-90)*Mathf.Deg2Rad)*speed);

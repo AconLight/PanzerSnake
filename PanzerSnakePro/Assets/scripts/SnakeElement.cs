@@ -1,4 +1,6 @@
-﻿using System.Timers;
+﻿using System.Xml.Serialization;
+using System.Runtime.InteropServices;
+using System.Timers;
 using System.Threading;
 using System.Net.NetworkInformation;
 using System;
@@ -19,6 +21,8 @@ public class SnakeElement : MonoBehaviour
     private GameObject weaponPrefab;
 
     public GameObject projectilePrefab;
+
+    public GameObject detachedSnakeElementPrefab;
 
     public GameObject prev { get; set; }
     public GameObject next { get; set; }
@@ -45,11 +49,10 @@ public class SnakeElement : MonoBehaviour
         
     }
 
-    public void ChooseType(int idx) {
-        gameObject.transform.localPosition = settings.GetComponent<Settings>().startPositions[idx];
+    public void ChooseType(int idx, Vector3 setPosition) {
+        gameObject.transform.localPosition = setPosition;
         positionsNumb = settings.GetComponent<Settings>().nextTankIterationsDelay;
         typeIdx = idx;
-        UnityEngine.Debug.Log("elo");
         if (prev) {
             for (int i = 0; i < positionsNumb; i++) {
                 myPositions.Add(new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0));
@@ -69,7 +72,13 @@ public class SnakeElement : MonoBehaviour
     }
 
     public void OnDestroyElement() {
-        DetachMeAndNexts();
+        if (prev) {
+            prev.GetComponent<SnakeElement>().next = null;
+        }
+        if (next) {
+            //next.GetComponent<SnakeElement>().prev = null;
+            next.GetComponent<SnakeElement>().DetachMeAndNexts();
+        }
         Destroy(gameObject);
     }
 
@@ -78,13 +87,22 @@ public class SnakeElement : MonoBehaviour
     }
 
     public void DetachMeAndNexts() {
+        GameObject detached = Instantiate(detachedSnakeElementPrefab, new Vector3(0,0,0), Quaternion.identity);
+        detached.transform.localPosition = gameObject.transform.localPosition;
+        detached.GetComponent<DetachedSnakeElement>().ChooseType(typeIdx, tankPrefab, weaponPrefab);
         if (next) {
+            //next.GetComponent<SnakeElement>().prev = null;
             next.GetComponent<SnakeElement>().DetachMeAndNexts();
         }
-        gameObject.transform.parent = null;
-        prev = null;
-        next = null;
-        isDetached = true;
+        if (prev) {
+            //prev.GetComponent<SnakeElement>().next = null;
+        }
+        Destroy(gameObject);
+    }
+
+    private void AddDeteched(GameObject detached) {
+        gameObject.transform.parent.gameObject.GetComponent<Snake>().AddElement();
+        Destroy(detached);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -95,6 +113,8 @@ public class SnakeElement : MonoBehaviour
                 other.gameObject.GetComponent<Projectile>().OnDestroyProjectile();
             }
             
+        } else if (other.gameObject.CompareTag("detached")) {
+            AddDeteched(other.gameObject);
         }
     }
 
@@ -126,7 +146,6 @@ public class SnakeElement : MonoBehaviour
         if (axisX == 0f && axisY == 0f) {
             return;
         }
-        UnityEngine.Debug.Log(axisX);
         move(axisX, axisY, Time.deltaTime);
 
     }
